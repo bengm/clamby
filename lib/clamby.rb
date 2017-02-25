@@ -7,7 +7,9 @@ module Clamby
     :daemonize => false,
     :error_clamscan_missing => true,
     :error_file_missing => true,
-    :error_file_virus => false
+    :error_file_virus => false,
+    :deamon_executable_name => "clamdscan",
+    :executable_name => "clamscan"
   }
 
   @valid_config_keys = @config.keys
@@ -64,7 +66,7 @@ module Clamby
   end
 
   def self.clamd_executable_name(daemonize: false)
-    daemonize? ? "clamdscan" : "clamscan"
+    daemonize? ? @config[:deamon_executable_name] : @config[:executable_name]
   end
 
   def self.daemonize?
