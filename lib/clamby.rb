@@ -25,8 +25,8 @@ module Clamby
   end
 
   def self.virus?(path)
-    return nil unless scanner_exists?
-    return nil unless file_exists?(path)
+    # return nil unless scanner_exists?
+    return "FILE NOT FOUND" unless file_exists?(path)
     scanner = system(clamd_executable_name, path, '--no-summary')
 
     return false if scanner
